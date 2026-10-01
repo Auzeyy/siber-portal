@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TÜRKİYE CUMHURİYETİ - SİBER MİLLİ PORTAL</title>
+    <style>
+        :root {
+            --bg-color: #08080c;
+            --card-bg: rgba(16, 18, 26, 0.88);
+            --primary-red: #ff001e;
+            --dark-red: #80000f;
+            --neon-glow: rgba(255, 0, 30, 0.5);
+            --text-color: #e6e6e6;
+            --text-dim: #b0b0bc;
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Consolas', 'Segoe UI', Tahoma, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(to bottom, rgba(8, 8, 12, 0.8), rgba(8, 8, 12, 0.95)),
+                url('ataturk.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .cyber-bar {
+            background-color: rgba(128, 0, 15, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--primary-red);
+            backdrop-filter: blur(5px);
+        }
+
+        header {
+            background-color: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-red);
+            box-shadow: 0 0 15px var(--neon-glow);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            text-shadow: 0 0 10px var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background-color: var(--dark-red);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px 30px 20px;
+            border-bottom: 1px solid rgba(255, 0, 30, 0.3);
+            background: linear-gradient(180deg, rgba(255,0,30,0.15) 0%, rgba(0,0,0,0.5) 100%);
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-portrait {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 30px var(--primary-red), 0 0 15px var(--gold);
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 0 0 25px var(--primary-red), 0 0 10px #000;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .clickable-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 0, 30, 0.5);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .clickable-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+            box-shadow: 0 0 30px var(--neon-glow);
+            background-color: rgba(22, 25, 36, 0.95);
+        }
+
+        .clickable-card::after {
+            content: "🔍 DETAYLI HİKAYE, DEVRİMLER VE RESİMLER İÇİN TIKLAYIN";
+            display: block;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .cyber-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 0, 30, 0.4);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .cyber-card h2, .clickable-card h2 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--primary-red);
+            padding-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-glow);
+        }
+
+        .audio-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 6px;
+            border: 1px solid var(--dark-red);
+        }
+
+        .audio-container p {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        audio {
+            width: 100%;
+            height: 40px;
+            outline: none;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        li {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid var(--primary-red);
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 30px 15px;
+        }
+
+        .modal-content {
+            background-color: rgba(18, 20, 29, 0.98);
+            border: 2px solid var(--primary-red);
+            border-radius: 10px;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 35px;
+            position: relative;
+            box-shadow: 0 0 35px var(--neon-glow);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2.2rem;
+            color: var(--primary-red);
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .close-btn:hover {
+            color: #fff;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--dark-red);
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: #1a1d28;
+            color: var(--text-color);
+            border: 1px solid var(--dark-red);
+            padding: 10px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-red);
+            color: #fff;
+            box-shadow: 0 0 10px var(--neon-glow);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .story-text {
+            color: #d1d1d6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--primary-red);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.08);
+        }
+
+        .gallery-item p {
+            padding: 12px;
+            font-size: 0.9rem;
+            color: var(--gold);
+            background-color: #0b0c12;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: rgba(4, 4, 6, 0.95);
+            text-align: center;
+            padding: 30px;
+            border-top: 2px solid var(--primary-red);
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 1rem;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                padding: 20px 15px;
+            }
+
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cyber-bar">
+        [!] TÜRKİYE SİBER BİLİM PORTALI - LİDERLER ÖZEL İNTERAKTİF VERSİYONU v4.0 [!]
+    </div>
+
+    <header>
+        <div class="logo">🇹🇷 TÜRKİYE PORTALI</div>
+        <nav>
+            <a href="#liderler">Milli Liderler</a>
+            <a href="#inonu">İsmet İnönü</a>
+            <a href="#kurallar">Anayasa</a>
+            <a href="#rehber">Geliştirici</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-portrait">
+            <img src="ataturk.jpg" alt="Gazi Mustafa Kemal Atatürk">
+        </div>
+        <h1>ŞANLI TÜRKİYE CUMHURİYETİ</h1>
+        <p>Aşağıdaki lider kartlarına tıklayarak hayatı, resimleri, devrimleri ve kararları hakkında detaylı bilgiye ulaşabilirsiniz.</p>
+    </div>
+
+    <div class="container" id="liderler">
+
+        <!-- ATATÜRK KARTI -->
+        <div class="clickable-card" onclick="openModal('ataturkModal')">
+            <h2>🇹🇷 Gazi Mustafa Kemal Atatürk</h2>
+            <p>Türkiye Cumhuriyeti'nin Kurucusu, Anafartalar Kahramanı ve Ulu Önder. Detaylı hayat hikayesi, resim galerisi, Türk milletine kazandırdığı haklar ve tarihi kararları için tıklayın.</p>
+            
+            <div class="audio-container" onclick="event.stopPropagation();">
+                <p>🎵 <strong>İstiklal Marşı:</strong></p>
+                <audio controls preload="auto">
+                    <source src="istiklal.mp3" type="audio/mpeg">
+                    Tarayıcınız ses oynatıcısını desteklemiyor.
+                </audio>
+            </div>
+        </div>
+
+        <!-- FATİH SULTAN MEHMET KARTI -->
+        <div class="clickable-card" onclick="openModal('fatihModal')">
+            <h2>⚔ Fatih Sultan Mehmet Han</h2>
+            <p>İstanbul'un Fatihi, Çağ Açıp Çağ Kapatan Cihan Padişahı. Gemileri karadan yürütme stratejisi, adalet fermanları, resimleri ve askeri dehası için tıklayın.</p>
+
+            <div class="audio-container" onclick="event.stopPropagation();">
+                <p>🎵 <strong>Ceddin Deden (Mehter Marşı):</strong></p>
+                <audio controls preload="auto">
+                    <source src="ceddin.mp3" type="audio/mpeg">
+                    Tarayıcınız ses oynatıcısını desteklemiyor.
+                </audio>
+            </div>
+        </div>
+
+        <!-- İSMET İNÖNÜ -->
+        <div id="inonu" class="cyber-card">
+            <h2>İsmet İnönü</h2>
+            <p>Kurtuluş Savaşı'nın Batı Cephesi Komutanı olarak Birinci ve İkinci İnönü Zaferleri ile düşmanın belini kıran büyük asker ve devlet adamıdır.</p>
+            <p style="margin-top:10px;">Lozan Barış Antlaşması'nda Türkiye Cumhuriyeti'nin bağımsızlığını tüm dünyaya kabul ettiren başdelege ve Türkiye'nin 2. Cumhurbaşkanıdır.</p>
+        </div>
+
+        <!-- ANAYASA KURALLARI -->
+        <div id="kurallar" class="cyber-card">
+            <h2>Türkiye Cumhuriyeti Anayasası Temel Maddeleri</h2>
+            <ul>
+                <li><strong>Madde 1:</strong> Türkiye Devleti bir Cumhuriyettir.</li>
+                <li><strong>Madde 2:</strong> Türkiye Cumhuriyeti, toplumun huzuru, milli dayanışma ve adalet anlayışı içinde, insan haklarına saygılı, Atatürk milliyetçiliğine bağlı, demokratik, laik ve sosyal bir hukuk devletidir.</li>
+                <li><strong>Madde 3:</strong> Türkiye Devleti, ülkesi ve milletiyle bölünmez bir bütündür. Dili Türkçe'dir. Bayrağı, şekli kanununda belirtilen: beyaz ay yıldızlı al bayraktır. Milli marşı "İstiklal Marşı"dır. Başkenti Ankara'dır.</li>
+            </ul>
+        </div>
+
+        <!-- REHBER VE YAPIMCI -->
+        <div id="rehber" class="cyber-card">
+            <h2>Geliştirici & Sistem Güvenliği</h2>
+            <p><strong>Geliştirici / Yapımcı:</strong> TheMaxAep</p>
+            <p><strong>Güvenlik Mimarisi:</strong> Static Jamstack Architecture + Cloudflare Anti-DDoS Shield</p>
+            <p><strong>Amaç:</strong> Bilişim Teknolojileri Dersi Şanlı Türkiye Projesi</p>
+        </div>
+
+    </div>
+
+    <!-- ATATÜRK MODAL -->
+    <div id="ataturkModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('ataturkModal')">&times;</span>
+            <h2 style="color:var(--primary-red);">Gazi Mustafa Kemal Atatürk</h2>
+            
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab(event, 'ata-hikaye')">📖 Geniş Hayat Hikayesi</button>
+                <button class="tab-btn" onclick="switchTab(event, 'ata-haklar')">⚖ Kazandırdığı Haklar</button>
+                <button class="tab-btn" onclick="switchTab(event, 'ata-secimler')">🏛️ Kararlar & Devrimler</button>
+                <button class="tab-btn" onclick="switchTab(event, 'ata-resimler')">🖼 Fotoğraf Galerisi</button>
+            </div>
+
+            <div id="ata-hikaye" class="tab-content active">
+                <h3>Çocukluğundan Son Günlerine Gazi'nin Yaşam Öyküsü</h3>
+                <p class="story-text"><strong>1881 - Çocukluk ve Eğitim Yılları:</strong> Mustafa Kemal Atatürk, 1881 yılında Selanik'te doğdu. Babası Ali Rıza Efendi, annesi Zübeyde Hanım'dır. İlköğrenimine Mahalle Mektebi'nde başlasa da babasının isteğiyle Şemsi Efendi Mektebi'ne geçti. Askeri Rüştiye'de okurken matematik öğretmeni Mustafa Efendi, onun üstün yeteneklerini görerek adına "Kemal" ismini ekledi.</p>
+                <p class="story-text"><strong>1905-1911 - Askeri Görevler ve Trablusgarp:</strong> Harp Akademisi'ni Kurmay Yüzbaşı olarak bitirdi. Şam'da 5. Ordu'da göreve başladı. 1911 yılında İtalyanların Trablusgarp'a saldırması üzerine gizlice Libya'ya geçerek Derne ve Tobruk'ta yerli halkı örgütledi ve ilk büyük askeri zaferlerini kazandı.</p>
+                <p class="story-text"><strong>1915 - Çanakkale Destanı:</strong> I. Dünya Savaşı'nda Anafartalar Grubu Komutanı olarak görev yaptı. Conkbayırı ve Arıburnu'nda düşman donanmalarına karşı "Ben size taarruzu değil, ölmeyi emrediyorum!" diyerek tarihin en büyük askeri savunmasını gerçekleştirdi ve Çanakkale'yi geçilmez kıldı.</p>
+                <p class="story-text"><strong>1919-1922 - Kurtuluş Savaşı ve Milli Mücadele:</strong> Vatanın işgal edilmesine karşı 19 Mayıs 1919'da Bandırma Vapuru ile Samsun'a ayak bastı. Amasya Genelgesi, Erzurum ve Sivas Kongreleri ile milleti birleştirdi. 23 Nisan 1920'de Ankara'da TBMM'yi açtı. Sakarya Meydan Muharebesi ve Büyük Taarruz ile işgalci orduları yurttan tamamen temizledi.</p>
+                <p class="story-text"><strong>1923-1938 - Cumhuriyet ve Son Yıllar:</strong> 29 Ekim 1923'te Türkiye Cumhuriyeti'ni ilan etti ve ilk Cumhurbaşkanı seçildi. Hayatının son anına kadar Türk milletini çağdaş medeniyetler seviyesine çıkarmak için çalıştı. 10 Kasım 1938'de Dolmabahçe Sarayı'nda hayata gözlerini yumdu.</p>
+            </div>
+
+            <div id="ata-haklar" class="tab-content">
+                <h3>Türk Milletine Kazandırılan Hak ve Hürriyetler</h3>
+                <ul>
+                    <li><strong>Kadınlara Siyasi Haklar (1930 - 1934):</strong> Kadınlara önce belediye seçimlerinde (1930), ardından 5 Aralık 1934'te milletvekili seçme ve seçilme hakkı verildi.</li>
+                    <li><strong>Eğitim ve Öğretim Birliği (Tevhidi Tedrisat - 1924):</strong> Bütün okullar Milli Eğitim Bakanlığı'na bağlandı. Eğitim laikleşti ve parasız hale getirildi.</li>
+                    <li><strong>Türk Medeni Kanunu (1926):</strong> Kadın ve erkek hukuk karşısında tamamen eşitlendi. Tek eşlilik esası ve resmi nikah zorunluluğu getirildi.</li>
+                    <li><strong>Soyadı Kanunu (1934):</strong> Ayrıcalık belirten unvanlar kaldırılarak her vatandaşa bir soyadı alma zorunluluğu getirildi.</li>
+                </ul>
+            </div>
+
+            <div id="ata-secimler" class="tab-content">
+                <h3>Tarihi Kararları, İlkeleri ve Büyük Devrimleri</h3>
+                <ul>
+                    <li><strong>Saltanatın ve Halifeliğin Kaldırılması:</strong> Egemenlik kayıtsız şartsız millete verildi.</li>
+                    <li><strong>Harf İnkılabı (1928):</strong> Yeni Türk harfleri kabul edildi.</li>
+                    <li><strong>Atatürk İlkeleri:</strong> Cumhuriyetçilik, Milliyetçilik, Halkçılık, Devletçilik, Laiklik ve İnkılapçılık.</li>
+                </ul>
+            </div>
+
+            <div id="ata-resimler" class="tab-content">
+                <h3>Gazi Mustafa Kemal Atatürk Fotoğraf Galerisi</h3>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="ataturk.jpg" alt="Mustafa Kemal Atatürk Portresi">
+                        <p>Ulu Önder Mustafa Kemal Atatürk</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FATİH SULTAN MEHMET MODAL -->
+    <div id="fatihModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('fatihModal')">&times;</span>
+            <h2 style="color:var(--gold);">Fatih Sultan Mehmet Han</h2>
+            
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab(event, 'fatih-hikaye')">📖 Geniş Hayat Hikayesi</button>
+                <button class="tab-btn" onclick="switchTab(event, 'fatih-haklar')">📜 Adalet & Fermanlar</button>
+                <button class="tab-btn" onclick="switchTab(event, 'fatih-secimler')">⚔ Askeri Kararları</button>
+            </div>
+
+            <div id="fatih-hikaye" class="tab-content active">
+                <h3>Cihan Padişahı II. Mehmet'in Destansı Yaşamı</h3>
+                <p class="story-text"><strong>1432 - Şehzadelik Yılları:</strong> 30 Mart 1432'de Edirne'de doğdu. Akşemseddin ve Molla Gürani'den dersler alarak 6 yabancı dil öğrendi.</p>
+                <p class="story-text"><strong>1453 - İstanbul'un Fethi:</strong> "Ya ben İstanbul'u alırım ya İstanbul beni!" diyerek 53 günlük kuşatmayla İstanbul'u fethetti, Orta Çağ'ı kapatıp Yeni Çağ'ı açtı.</p>
+            </div>
+
+            <div id="fatih-haklar" class="tab-content">
+                <h3>Hoşgörü, Adalet ve İnsan Hakları Bildirgeleri</h3>
+                <ul>
+                    <li><strong>Bosna Ahidnümesi (1463):</strong> Tarihin ilk insan hakları bildirgelerindendir. Hristiyan halka tam ibadet özgürlüğü sağlamıştır.</li>
+                </ul>
+            </div>
+
+            <div id="fatih-secimler" class="tab-content">
+                <h3>Tarihi Kararları ve Askeri Dehası</h3>
+                <ul>
+                    <li><strong>Gemilerin Karadan Yürütülmesi:</strong> 67 savaş gemisi bir gecede karadan Haliç'e indirildi.</li>
+                    <li><strong>Şahi Topları:</strong> Hesabını bizzat yaptığı devasa toplarla surları yıktı.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Türkiye Siber Portalı. Geliştirici: <span>TheMaxAep</span></p>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function switchTab(evt, tabId) {
+            var modalContent = evt.currentTarget.closest('.modal-content');
+            var tabContents = modalContent.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            var tabBtns = modalContent.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                document.querySelectorAll('.modal').forEach(function(modal) {
+                    modal.style.display = "none";
+                });
+                document.body.style.overflow = "auto";
+            }
+        });
+    </script>
+</body>
+</html>
